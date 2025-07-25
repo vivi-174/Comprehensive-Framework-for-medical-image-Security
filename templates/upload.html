@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Upload MRI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Brain MRI</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <div class="file-upload">
+                <input type="file" name="file" id="fileInput" class="file-input" required>
+            </div>
+            <button type="submit" class="btn">Upload</button>
+        </form>
+    </div>
+</body>
+</html>
+    
+    

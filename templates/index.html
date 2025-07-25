@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vishi Hospitals</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo1.png') }}" alt="Vishi Hospitals Logo">
+            <span>Vishi Hospitals</span>
+        </div>
+        <div class="header-right">
+            <input type="text" class="search-bar" placeholder="Search...">
+            <button class="btn">Book Consultations</button>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Facilities</a></li>
+            <li><a href="#">Consultants</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+        <ul class="auth-links">
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('register') }}">Register</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Section -->
+    <div class="main-section">
+        <!-- Carousel -->
+        <div class="carousel-container">
+            <div class="carousel-wrapper">
+                <div class="carousel-slide">
+                    <img src="{{ url_for('static', filename='img1.jpg') }}" alt="Image 1">
+                    <img src="{{ url_for('static', filename='img2.jpg') }}" alt="Image 2">
+                    <img src="{{ url_for('static', filename='img3.jpg') }}" alt="Image 3">
+                </div>
+            </div>
+        </div>
+
+        <!-- Text Section -->
+        <div class="text-container">
+            <h2>Welcome to Vishi Hospital</h2>
+            <p>Your health, our priority</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Vishi Hospitals. All Rights Reserved.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Verify MRI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        .container {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            padding: 20px;
+            border-radius: 15px;
+            font-size: 18px;
+        }
+    </style>
+
+    <script>
+        function toggleBlockchainDetails() {
+            var details = document.getElementById("blockchain-details");
+            if (details.style.display === "none") {
+                details.style.display = "block";
+            } else {
+                details.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Verification Results</h1>
+
+        {% if patient.mri_image %}
+    <h3>Brain MRI Image:</h3>
+    <img src="{{ url_for('static', filename='uploads/' + patient.mri_image) }}" alt="MRI Image" width="350px">
+{% else %}
+    <p>Error: MRI image not available.</p>
+{% endif %}
+
+
+        <p><strong>Name:</strong> {{ patient.name }}</p>
+        <p><strong>Age:</strong> {{ patient.age }}</p>
+        <p><strong>DOB:</strong> {{ patient.dob }}</p>
+        <p><strong>Scan Date:</strong> {{ patient.scan_date }}</p>
+        <p><strong>Scan Time:</strong> {{ patient.scan_time }}</p>
+        <p><strong>Blockchain Status:</strong> {{ patient.blockchain_status }}</p>
+
+        <p><strong>AI Verification:</strong> 
+            <span class="{{ patient.ai_verification_class }}">{{ patient.ai_verification }}</span>
+        </p>
+
+        <!-- Show Altered Regions if MRI is Modified -->
+        {% if patient.ai_verification == "Altered" %}
+            <h2>Detected Alterations:</h2>
+            <ul>
+                {% for region in patient.altered_regions %}
+                    <li>{{ region }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <!-- Blockchain Details with "Show More" Option -->
+        <!--<button onclick="toggleBlockchainDetails()">Show More</button> -->
+        <div id="blockchain-details" style="display: none;">
+            <h2>Blockchain Contents</h2>
+            <p><strong>Transaction Hash:</strong> {{ patient.blockchain_hash }}</p>
+            <p><strong>Timestamp:</strong> {{ patient.blockchain_timestamp }}</p>
+            <p><strong>Stored on Node:</strong> {{ patient.blockchain_node }}</p>
+        </div>
+    </div>
+</body>
+</html>
